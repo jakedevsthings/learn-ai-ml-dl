@@ -8,6 +8,7 @@ __pycache__/
 # Ignore virtual environments
 venv/
 .env/
+.venv/
 env/
 
 # Ignore pip and dependency cache

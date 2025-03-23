@@ -1,4 +1,4 @@
-# /learn-ai-ml-dl/phase0/linear_algebra/src/matrix_ops.py
+# /learn-ai-ml-dl/phase0/linear_algebra/matrix_ops.py
 
 """
 Matrix operations implemented from scratch.

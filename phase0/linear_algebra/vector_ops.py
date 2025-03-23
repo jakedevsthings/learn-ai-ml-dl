@@ -1,4 +1,4 @@
-# /learn-ai-ml-dl/phase0/linear_algebra/src/vector_ops.py
+# /learn-ai-ml-dl/phase0/linear_algebra/vector_ops.py
 
 """
 Vector operations implemented from scratch.
