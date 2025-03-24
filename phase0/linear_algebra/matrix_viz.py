@@ -128,3 +128,63 @@ def plot_linear_transformation(ax, transformation_matrix, grid_lines=True):
     ax.set_aspect('equal')
     
     return ax
+
+
+def plot_matrix_transform(A):
+    # Create unit circle
+    theta = np.linspace(0, 2 * np.pi, 200)
+    unit_circle = np.vstack((np.cos(theta), np.sin(theta)))  # shape (2, N)
+
+    # Apply matrix transformation: Y = A · X
+    transformed = A @ unit_circle
+
+    # Plot
+    fig, ax = plt.subplots(figsize=(6, 6))
+    ax.plot(unit_circle[0], unit_circle[1], label='Unit Circle', color='blue')
+    ax.plot(transformed[0], transformed[1], label='Transformed Shape', color='red')
+    ax.axhline(0, color='gray', lw=0.5)
+    ax.axvline(0, color='gray', lw=0.5)
+    ax.set_aspect('equal')
+    ax.set_title(f"Matrix Transform of Unit Circle\nA =\n{np.array_str(A)}")
+    ax.legend()
+    plt.grid(True)
+    plt.show()
+
+def plot_matrix_transform_with_basis(A):
+    # Create unit circle
+    theta = np.linspace(0, 2 * np.pi, 200)
+    unit_circle = np.vstack((np.cos(theta), np.sin(theta)))  # shape (2, N)
+
+    # Apply matrix transformation
+    transformed = A @ unit_circle
+
+    # Basis vectors (standard)
+    e1 = np.array([[1], [0]])
+    e2 = np.array([[0], [1]])
+
+    # Transformed basis vectors
+    Ae1 = A @ e1
+    Ae2 = A @ e2
+
+    # Plot
+    fig, ax = plt.subplots(figsize=(6, 6))
+    
+    # Plot unit circle and its transformation
+    ax.plot(unit_circle[0], unit_circle[1], label='Unit Circle', color='blue')
+    ax.plot(transformed[0], transformed[1], label='Transformed Shape', color='red')
+    
+    # Plot original basis vectors
+    ax.quiver(0, 0, e1[0], e1[1], angles='xy', scale_units='xy', scale=1, color='green', label='Basis e1')
+    ax.quiver(0, 0, e2[0], e2[1], angles='xy', scale_units='xy', scale=1, color='orange', label='Basis e2')
+
+    # Plot transformed basis vectors (dashed lines manually)
+    ax.quiver(0, 0, Ae1[0], Ae1[1], angles='xy', scale_units='xy', scale=1, color='green', alpha=0.5, label='A·e1')
+    ax.quiver(0, 0, Ae2[0], Ae2[1], angles='xy', scale_units='xy', scale=1, color='orange', alpha=0.5, label='A·e2')
+
+    ax.axhline(0, color='gray', lw=0.5)
+    ax.axvline(0, color='gray', lw=0.5)
+    ax.set_aspect('equal')
+    ax.set_title(f"Matrix Transform of Unit Circle with Basis\nA =\n{np.array_str(A)}")
+    ax.legend(loc='upper left')
+    plt.grid(True)
+    plt.show()

@@ -90,3 +90,58 @@ def identity_matrix(n):
     for i in range(n):
         result[i][i] = 1
     return result
+
+
+def is_linearly_independent(vectors):
+    """
+    Determines if a set of vectors is linearly independent.
+    Args:
+        vectors: list of vectors (each a list of floats or ints)
+    Returns:
+        True if linearly independent, False otherwise
+    """
+    import copy
+
+    if not vectors:
+        return True  # empty set is trivially independent
+
+    # Transpose: convert list of column vectors to row-wise matrix
+    matrix = [list(row) for row in zip(*vectors)]
+    rows = len(matrix)
+    cols = len(matrix[0])
+    mat = copy.deepcopy(matrix)
+
+    pivot_count = 0
+    lead = 0
+
+    for r in range(rows):
+        if lead >= cols:
+            break
+        i = r
+        while mat[i][lead] == 0:
+            i += 1
+            if i == rows:
+                i = r
+                lead += 1
+                if lead == cols:
+                    break
+        if lead == cols:
+            break
+        # Swap to bring pivot row up
+        mat[i], mat[r] = mat[r], mat[i]
+
+        # Normalize pivot row
+        lv = mat[r][lead]
+        mat[r] = [mrx / lv for mrx in mat[r]]
+
+        # Eliminate below and above
+        for i in range(rows):
+            if i != r:
+                lv = mat[i][lead]
+                mat[i] = [iv - lv * rv for rv, iv in zip(mat[r], mat[i])]
+
+        pivot_count += 1
+        lead += 1
+
+    # If number of pivot columns = number of input vectors → independent
+    return pivot_count == len(vectors)
