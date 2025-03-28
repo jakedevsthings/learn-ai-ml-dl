@@ -1,126 +1,82 @@
-# /learn-ai-ml-dl/phase0/python_optimization/memory_management.py
-
-"""
-Memory management techniques for efficient machine learning operations.
-"""
-
 import sys
 import numpy as np
-import gc
+import gc # Garbage Collector interface
 
-def get_size(obj, seen=None):
-    """
-    Recursively determine the size of an object in bytes.
-    
-    Parameters:
-    -----------
-    obj : any
-        The object to measure
-    seen : set, optional
-        Set of objects already seen (for handling recursive structures)
-        
-    Returns:
-    --------
-    int
-        Size of the object in bytes
-    """
-    # Initialize the set of seen objects if needed
-    if seen is None:
-        seen = set()
-    
-    # Get object id to avoid duplicate counting
-    obj_id = id(obj)
-    
-    # If we've already seen this object, skip it
-    if obj_id in seen:
-        return 0
-    
-    # Add the object to seen
-    seen.add(obj_id)
-    
-    # Get the size of the object itself
-    size = sys.getsizeof(obj)
-    
-    # Handle containers
-    if isinstance(obj, (list, tuple, set, frozenset)):
-        # Add size of each element
-        size += sum(get_size(item, seen) for item in obj)
-    
-    elif isinstance(obj, dict):
-        # Add size of keys and values
-        size += sum(get_size(k, seen) + get_size(v, seen) for k, v in obj.items())
-    
-    elif isinstance(obj, np.ndarray):
-        # Add size of array data
-        size = obj.nbytes
-    
-    return size
+# --- Basic Memory Usage with Python Lists ---
 
-def optimize_dtype(array, verbose=False):
-    """
-    Optimize the data type of a NumPy array to use less memory.
-    
-    Parameters:
-    -----------
-    array : numpy.ndarray
-        The array to optimize
-    verbose : bool, optional
-        Whether to print information about the optimization
-        
-    Returns:
-    --------
-    numpy.ndarray
-        The array with an optimized data type
-    """
-    original_size = array.nbytes
-    original_dtype = array.dtype
-    
-    # Find the min and max values
-    min_val = array.min()
-    max_val = array.max()
-    
-    # Determine if the array contains integers or floats
-    if np.issubdtype(array.dtype, np.integer):
-        # For integer data, find the smallest integer type that can hold the data
-        if min_val >= 0:  # unsigned
-            if max_val <= np.iinfo(np.uint8).max:
-                new_dtype = np.uint8
-            elif max_val <= np.iinfo(np.uint16).max:
-                new_dtype = np.uint16
-            elif max_val <= np.iinfo(np.uint32).max:
-                new_dtype = np.uint32
-            else:
-                new_dtype = np.uint64
-        else:  # signed
-            if min_val >= np.iinfo(np.int8).min and max_val <= np.iinfo(np.int8).max:
-                new_dtype = np.int8
-            elif min_val >= np.iinfo(np.int16).min and max_val <= np.iinfo(np.int16).max:
-                new_dtype = np.int16
-            elif min_val >= np.iinfo(np.int32).min and max_val <= np.iinfo(np.int32).max:
-                new_dtype = np.int32
-            else:
-                new_dtype = np.int64
-    
-    elif np.issubdtype(array.dtype, np.floating):
-        # For floating-point data, consider float16 or float32 if precision is sufficient
-        if min_val >= np.finfo(np.float16).min and max_val <= np.finfo(np.float16).max:
-            new_dtype = np.float16
-        elif min_val >= np.finfo(np.float32).min and max_val <= np.finfo(np.float32).max:
-            new_dtype = np.float32
-        else:
-            new_dtype = np.float64
-    
-    else:
-        # For other types, keep the original dtype
-        new_dtype = array.dtype
-    
-    # Convert to the new dtype
-    optimized_array = array.astype(new_dtype)
-    new_size = optimized_array.nbytes
-    
-    if verbose:
-        print(f"Original dtype: {original_dtype}, size: {original_size} bytes")
-        print(f"New dtype: {new_dtype}, size: {new_size} bytes")
-        print(f"Memory savings: {original_size - new_size} bytes ({(1 - new_size/original_size)*100:.2f}%)")
-    
-    return optimized_array
+def create_large_list(size):
+    """Creates a large list of integers."""
+    print(f"\nCreating a list with {size:,} integers...")
+    large_list = list(range(size))
+    memory_usage_bytes = sys.getsizeof(large_list)
+    memory_usage_mb = memory_usage_bytes / (1024 * 1024)
+    print(f"Approximate memory usage of the list object: {memory_usage_bytes:,} bytes (~{memory_usage_mb:.2f} MB)")
+    # Note: sys.getsizeof() might not account for the memory of the items *within* the list accurately,
+    # especially for complex objects. It gives the size of the container itself.
+    # For a list of simple integers, it's a reasonable starting point.
+    return large_list
+
+list_size = 10_000_000
+my_list = create_large_list(list_size)
+
+# Observe memory - you might need OS tools (like top/htop on Linux, Task Manager on Windows)
+# input("Press Enter after observing memory usage...")
+
+# --- Memory Usage with NumPy Arrays ---
+
+def create_large_numpy_array(size):
+    """Creates a large NumPy array of integers."""
+    print(f"\nCreating a NumPy array with {size:,} integers...")
+    large_array = np.arange(size, dtype=np.int64) # Use a specific dtype
+    memory_usage_bytes = large_array.nbytes
+    memory_usage_mb = memory_usage_bytes / (1024 * 1024)
+    print(f"Accurate memory usage of the NumPy array data: {memory_usage_bytes:,} bytes (~{memory_usage_mb:.2f} MB)")
+    # NumPy's .nbytes gives the total bytes consumed by the array's elements.
+    return large_array
+
+array_size = 10_000_000
+my_array = create_large_numpy_array(array_size)
+
+# Compare memory usage (NumPy arrays are generally more memory-efficient for numerical data)
+print("\nComparing list vs NumPy array for the same number of elements:")
+print(f"List object size: {sys.getsizeof(my_list) / (1024*1024):.2f} MB (approximate)")
+print(f"NumPy array data size: {my_array.nbytes / (1024*1024):.2f} MB (accurate)")
+
+# --- Releasing Memory ---
+print("\nReleasing references to large objects...")
+del my_list
+del my_array
+
+# Suggest garbage collection (Python does this automatically, but can be triggered)
+print("Suggesting garbage collection...")
+gc.collect()
+print("Garbage collection suggested. Observe memory usage again.")
+
+# input("Press Enter after observing memory usage reduction...")
+
+# --- Memory-Efficient Processing (Example: Generators) ---
+
+def process_data_generator(data_source):
+    """Processes data yielded by a generator, one item at a time."""
+    print("\nProcessing data using a generator (memory-efficient)...")
+    total_sum = 0
+    count = 0
+    for item in data_source:
+        # Simulate processing
+        total_sum += item * 2
+        count += 1
+        # if count % 1_000_000 == 0:
+        #     print(f"Processed {count} items...")
+    print(f"Finished processing {count} items. Final sum: {total_sum}")
+
+def data_generator(size):
+    """A generator function that yields numbers without storing them all."""
+    for i in range(size):
+        yield i
+
+large_data_size = 20_000_000 # Even larger size
+
+# Process using the generator - avoids creating a huge list/array in memory
+process_data_generator(data_generator(large_data_size))
+
+print("\nNote: For truly massive datasets that don't fit in RAM, techniques like memory mapping (numpy.memmap) or chunking with libraries like Dask or Pandas are necessary.")

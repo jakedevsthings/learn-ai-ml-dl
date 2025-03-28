@@ -62,3 +62,5 @@ docker-compose.override.yml
 # Ignore database or local storage files
 *.sqlite3
 *.db
+
+*.prof
