@@ -1,0 +1,30 @@
+project_root/
+│
+├── ml_core/
+│   ├── layers/
+│   │   ├── dense.py
+│   │   └── __init__.py
+│   ├── activations/
+│   │   ├── sigmoid.py
+│   │   └── __init__.py
+│   ├── losses/
+│   │   └── binary_crossentropy.py
+│   ├── metrics/
+│   └── network.py         # high-level NN class that stacks layers
+│
+├── milestone_1_1/
+│   ├── train.py
+│   ├── visualize.py
+│   └── xor_dataset.py     # milestone-specific code
+│
+├── milestone_1_2/
+│   └── (will re-use layers, network, etc.)
+│
+├── notebooks/
+│   └── scratchpad.ipynb
+│
+├── tests/
+│   └── test_core_components.py
+│
+├── README.md
+└── requirements.txt
