@@ -70,3 +70,27 @@ def plot_all_layer_activations(model, resolution=100):
         plt.suptitle(f"Layer {layer_idx + 1} Activations")
         plt.tight_layout()
         plt.show()
+
+def plot_layer_weights(model):
+
+    for layer_idx, layer in enumerate(model.layers):
+        if hasattr(layer, 'weights'):
+            W = layer.weights  # shape: (input_dim, output_dim)
+            W = W.T  # shape: (output_dim, input_dim) — one row per neuron
+
+            fig, axes = plt.subplots(1, W.shape[0], figsize=(3 * W.shape[0], 3))
+            if W.shape[0] == 1:
+                axes = [axes]
+
+            vmin, vmax = -1.0, 1.0  # or auto from global weight min/max
+            for i, ax in enumerate(axes):
+                print(f"Layer {layer_idx+1} Neuron {i+1} weights: {W[i]}")
+                ax.imshow(W[i].reshape(1, -1), cmap='coolwarm', aspect='auto', vmin=vmin, vmax=vmax)
+                ax.set_title(f"Layer {layer_idx + 1}, Neuron {i + 1}")
+                ax.set_yticks([])
+                ax.set_xticks(range(W.shape[1]))
+                ax.set_xticklabels([f"x{j+1}" for j in range(W.shape[1])])
+            
+            plt.suptitle(f"Weights for Layer {layer_idx + 1}")
+            plt.tight_layout()
+            plt.show()
