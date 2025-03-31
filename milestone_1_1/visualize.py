@@ -41,3 +41,32 @@ def plot_decision_boundary(model, X, y, title="Decision Boundary"):
     plt.ylabel("x₂")
     plt.grid(True)
     plt.show()
+
+def plot_all_layer_activations(model, resolution=100):
+    """
+    Plot the activations for all neurons in all layers of the model over 2D input space.
+    Assumes input is 2D.
+    """
+    x_vals = np.linspace(-0.5, 1.5, resolution)
+    y_vals = np.linspace(-0.5, 1.5, resolution)
+    xx, yy = np.meshgrid(x_vals, y_vals)
+    grid = np.c_[xx.ravel(), yy.ravel()]  # shape: (resolution², 2)
+
+    layer_outputs = model.get_all_activations(grid)
+
+    for layer_idx, activations in enumerate(layer_outputs):
+        num_neurons = activations.shape[1]
+        fig, axes = plt.subplots(1, num_neurons, figsize=(4 * num_neurons, 4))
+        if num_neurons == 1:
+            axes = [axes]
+        
+        for neuron_idx in range(num_neurons):
+            Z = activations[:, neuron_idx].reshape(xx.shape)
+            ax = axes[neuron_idx]
+            im = ax.contourf(xx, yy, Z, levels=100, cmap='viridis')
+            ax.set_title(f"Layer {layer_idx + 1} - Neuron {neuron_idx + 1}")
+            fig.colorbar(im, ax=ax)
+        
+        plt.suptitle(f"Layer {layer_idx + 1} Activations")
+        plt.tight_layout()
+        plt.show()

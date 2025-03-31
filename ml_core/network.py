@@ -22,3 +22,13 @@ class Network:
         """
         for layer in reversed(self.layers):
             loss_gradient = layer.backward(loss_gradient=loss_gradient, learning_rate=learning_rate)
+
+    def get_all_activations(self, inputs: np.ndarray) -> list[np.ndarray]:
+        """
+        Get the activations of all layers in the network.
+        """
+        activations = []
+        for layer in self.layers:
+            inputs = layer.forward(inputs)
+            activations.append(inputs.copy())
+        return activations
