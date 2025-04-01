@@ -6,8 +6,8 @@ pandas==2.0.3
 scikit-learn==1.3.0
 
 # Jupyter environment
-jupyter==1.0.0
-notebook==6.5.4
+jupyterlab==4.0.6
+ipykernel==6.25.1
 ipywidgets==8.0.7
 
 # Visualization tools
@@ -21,7 +21,7 @@ autograd==1.5
 # Deep Learning frameworks (for Milestone 1.2)
 torch==2.0.1
 torchvision==0.15.2
-tensorflow==2.13.0
+lightning==2.0.6
 
 # Progress tracking and visualization
 tqdm==4.65.0
@@ -30,3 +30,8 @@ tensorboard==2.13.0
 # Image processing (for MNIST)
 scikit-image==0.21.0
 pillow==10.0.0
+
+# AI Assistants
+black==25.1.0
+flake8==7.2.0
+pytest==8.3.5
