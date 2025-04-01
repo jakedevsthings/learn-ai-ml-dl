@@ -3,17 +3,29 @@
 import numpy as np
 
 class DenseLayer:
-    def __init__(self, input_size: int, output_size: int):
+    def __init__(self, input_size: int, output_size: int, initializer: str = 'xavier'):
         """
         Initialize the layer.
-        
+
         Parameters:
-          - input_size: number of input features
-          - output_size: number of output features
+        - input_size: number of input features
+        - output_size: number of output features
+        - initializer: weight initialization method ('xavier', 'he', or 'normal')
         """
         self.input_size = input_size
         self.output_size = output_size
-        self.weights = np.random.randn(output_size, input_size)
+
+        if initializer == 'xavier':
+            limit = np.sqrt(6 / (input_size + output_size))
+            self.weights = np.random.uniform(-limit, limit, (output_size, input_size))
+        elif initializer == 'he':
+            std = np.sqrt(2 / input_size)
+            self.weights = np.random.randn(output_size, input_size) * std
+        elif initializer == 'normal':
+            self.weights = np.random.randn(output_size, input_size)
+        else:
+            raise ValueError(f"Unknown initializer: '{initializer}'")
+
         self.bias = np.random.randn(output_size, 1)
 
     def forward(self, inputs: np.ndarray) -> np.ndarray:

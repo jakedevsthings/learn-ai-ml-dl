@@ -5,7 +5,7 @@ import numpy as np
 from ml_core.losses import BinaryCrossentropy as BCE_Loss
 from ml_core import Network as Neural_Network
 from ml_core.layers import DenseLayer as Dense_Layer
-from ml_core.activations import Sigmoid as Sigmoid_Activation
+from ml_core.activations import Sigmoid as Sigmoid_Activation, ReLU
 from milestone_1_1.xor_dataset import inputs, labels
 from milestone_1_1.visualize import plot_decision_boundary
 
@@ -22,9 +22,9 @@ bce_loss = BCE_Loss()
 # Initialize the network
 # 2 inputs, 4 hidden, 1 output
 neural_network = Neural_Network([
-    Dense_Layer(input_size=2, output_size=4),
-    Sigmoid_Activation(),
-    Dense_Layer(input_size=4, output_size=1),
+    Dense_Layer(input_size=2, output_size=4, initializer='he'),
+    ReLU(),
+    Dense_Layer(input_size=4, output_size=1, initializer='xavier'),
     Sigmoid_Activation(),
 ])
 
