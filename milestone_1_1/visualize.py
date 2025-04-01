@@ -78,7 +78,7 @@ def plot_layer_weights(model):
             W = layer.weights  # shape: (input_dim, output_dim)
             W = W.T  # shape: (output_dim, input_dim) — one row per neuron
 
-            fig, axes = plt.subplots(1, W.shape[0], figsize=(3 * W.shape[0], 3))
+            fig, axes = plt.subplots(1, W.shape[0], figsize=(4*W.shape[0], 4))
             if W.shape[0] == 1:
                 axes = [axes]
 

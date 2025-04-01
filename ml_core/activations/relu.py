@@ -1,4 +1,4 @@
-# ml_core/activations/ReLU.py
+# ml_core/activations/relu.py
 
 import numpy as np
 

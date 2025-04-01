@@ -1,4 +1,4 @@
-# ml_core/layers/sigmoid.py
+# ml_core/activations/sigmoid.py
 
 import numpy as np
 
