@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Deactivate venv if active
+if [[ "$VIRTUAL_ENV" != "" ]]; then
+    echo "🧹 Deactivating virtual environment..."
+    deactivate 2>/dev/null || echo "(venv already dead)"
+fi
+
 echo "🧹 [CLEAN] Removing .venv..."
 rm -rf .venv
 
