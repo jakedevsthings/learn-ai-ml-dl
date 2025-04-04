@@ -29,10 +29,11 @@ def plot_decision_boundary(model, X, y, title="Decision Boundary"):
     Z = model.forward(grid)
     Z = Z.reshape(xx.shape)  # Reshape to match mesh
 
+    plt.figure(figsize=(5, 5))
+
     # Plot contour map (decision surface)
     plt.contourf(xx, yy, Z, levels=100, cmap="RdBu", alpha=0.6)
     plt.contour(xx, yy, Z, levels=[0.5], colors='black', linewidths=2)
-
 
     # Overlay true points
     plt.scatter(X[:, 0], X[:, 1], c=y.ravel(), cmap="bwr", edgecolors='k')
@@ -56,7 +57,7 @@ def plot_all_layer_activations(model, resolution=100):
 
     for layer_idx, activations in enumerate(layer_outputs):
         num_neurons = activations.shape[1]
-        fig, axes = plt.subplots(1, num_neurons, figsize=(4 * num_neurons, 4))
+        fig, axes = plt.subplots(1, num_neurons, figsize=(3 * num_neurons, 3))
         if num_neurons == 1:
             axes = [axes]
         
@@ -78,7 +79,7 @@ def plot_layer_weights(model):
             W = layer.weights  # shape: (input_dim, output_dim)
             W = W.T  # shape: (output_dim, input_dim) — one row per neuron
 
-            fig, axes = plt.subplots(1, W.shape[0], figsize=(4*W.shape[0], 4))
+            fig, axes = plt.subplots(1, W.shape[0], figsize=(3*W.shape[0], 3))
             if W.shape[0] == 1:
                 axes = [axes]
 

@@ -2,3 +2,4 @@
 
 from .sigmoid import Sigmoid
 from .relu import ReLU
+from .tanh import Tanh
