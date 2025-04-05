@@ -26,7 +26,7 @@ class DenseLayer:
         else:
             raise ValueError(f"Unknown initializer: '{initializer}'")
 
-        self.bias = np.zeros(output_size, 1)
+        self.bias = np.zeros((output_size, 1))
 
     def forward(self, inputs: np.ndarray) -> np.ndarray:
         """
