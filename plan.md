@@ -3,9 +3,12 @@
 ## Overview
 This structured learning plan applies the Pareto principle to AI/ML education - focusing on the 20% of knowledge that delivers 80% of practical value. The plan progresses through strategic milestones, starting with mathematical foundations and culminating in building a small language model.
 
-## Phase 0: Mathematical and Programming Foundations (4-6 weeks)
+__Disclaimer__:
+AI was used and is being used generously in the creation of this plan and in the execution of the milestones. The extent of this usage depends on how quickly I wanted to progress through a given section; however, I can state with confidence that I have a solid understanding of the material and can apply it effectively. All phases were scaffolded using AI assistants, as well as the framework of the code therein. The code was then filled in by me (jakedevsthings or "jake") to learn in a hands-on way. The culmination of my understanding is in the notebooks throughout the project.
 
-### Milestone 0.1: Linear Algebra Essentials in Python (1-2 weeks)
+## ✅ Phase 0: Mathematical and Programming Foundations
+
+### ✅ Milestone 0.1: Linear Algebra Essentials in Python
 **Goal:** Implement core linear algebra operations using NumPy and visualize their geometric interpretations.
 
 **Learning Objectives:**
@@ -21,12 +24,12 @@ This structured learning plan applies the Pareto principle to AI/ML education - 
 4. Apply these concepts to a simple data analysis problem
 
 **Success Criteria:**
-- Implementation of basic linear algebra operations from scratch
-- Accurate visualization of vector transformations
-- Successful application to dimensional reduction problem
-- Clear documentation of mathematical concepts and code
+- ✅Implementation of basic linear algebra operations from scratch
+- ✅Accurate visualization of vector transformations
+- ✅Successful application to dimensional reduction problem
+- ✅Clear documentation of mathematical concepts and code
 
-### Milestone 0.2: Calculus for Neural Networks (1-2 weeks)
+### ✅ Milestone 0.2: Calculus for Neural Networks
 **Goal:** Implement differentiation and optimization algorithms in Python and apply them to simple function fitting.
 
 **Learning Objectives:**
@@ -42,12 +45,12 @@ This structured learning plan applies the Pareto principle to AI/ML education - 
 4. Compare optimization algorithms on different problem types
 
 **Success Criteria:**
-- Implementation of numerical differentiation techniques
-- Working gradient descent optimizer
-- Successful application to function fitting
-- Analysis of convergence behavior with different parameters
+- ✅Implementation of numerical differentiation techniques
+- ✅Working gradient descent optimizer
+- ✅Successful application to function fitting
+- ✅Analysis of convergence behavior with different parameters
 
-### Milestone 0.3: Statistical Foundations (1 week)
+### ✅ Milestone 0.3: Statistical Foundations
 **Goal:** Implement probability distributions, sampling methods, and statistical tests in Python.
 
 **Learning Objectives:**
@@ -63,12 +66,12 @@ This structured learning plan applies the Pareto principle to AI/ML education - 
 4. Apply statistical thinking to a data classification problem
 
 **Success Criteria:**
-- Implementation of key probability distributions
-- Working Bayesian inference algorithm
-- Successful application to binary classification
-- Documentation of statistical reasoning process
+- ✅Implementation of key probability distributions
+- ✅Working Bayesian inference algorithm
+- ✅Successful application to binary classification
+- ✅Documentation of statistical reasoning process
 
-### Milestone 0.4: Python Optimization for ML (1 week)
+### ✅ Milestone 0.4: Python Optimization for ML
 **Goal:** Master efficient Python coding practices for machine learning.
 
 **Learning Objectives:**
@@ -84,14 +87,14 @@ This structured learning plan applies the Pareto principle to AI/ML education - 
 4. Create an efficient batch processing system
 
 **Success Criteria:**
-- Significant performance improvements through vectorization
-- Implementation of memory-efficient data processing
-- Documented benchmarks comparing approaches
-- Creation of reusable optimization patterns
+- ✅Significant performance improvements through vectorization
+- ✅Implementation of memory-efficient data processing
+- ✅Documented benchmarks comparing approaches
+- ✅Creation of reusable optimization patterns
 
 ## Phase 1: Foundations
 
-### Milestone 1.1: Trivial Neural Network (2-3 weeks)
+### ✅ Milestone 1.1: Trivial Neural Network
 **Goal:** Create a simple binary classifier neural network from scratch using NumPy.
 
 **Learning Objectives:**
@@ -109,11 +112,14 @@ This structured learning plan applies the Pareto principle to AI/ML education - 
 6. Document architecture choices
 
 **Success Criteria:**
-- Neural network correctly classifies test data with >90% accuracy
-- Implementation demonstrates understanding of backpropagation
-- Code is well-documented and modular
+- ✅Neural network correctly classifies test data with >90% accuracy
+- ✅Implementation demonstrates understanding of backpropagation
+- ✅Code is well-documented and modular
 
-### Milestone 1.2: MNIST Digit Recognition (3-4 weeks)
+[View my summary of milestone 1.1 here!](milestone_1_1/milestone_1_1_summary.md)
+
+
+### Milestone 1.2: MNIST Digit Recognition
 **Goal:** Build a convolutional neural network to recognize handwritten digits with >98% accuracy.
 
 **Learning Objectives:**
@@ -137,7 +143,7 @@ This structured learning plan applies the Pareto principle to AI/ML education - 
 
 ## Phase 2: Intermediate Applications
 
-### Milestone 2.1: Computer Vision Project (4-6 weeks)
+### Milestone 2.1: Computer Vision Project
 **Goal:** Develop an image classification system for a real-world dataset using transfer learning.
 
 **Learning Objectives:**
@@ -159,7 +165,7 @@ This structured learning plan applies the Pareto principle to AI/ML education - 
 - Successful implementation of transfer learning
 - Deployed model with simple interface for predictions
 
-### Milestone 2.2: NLP Fundamentals (4-6 weeks)
+### Milestone 2.2: NLP Fundamentals
 **Goal:** Build a text classification system and implement a simple sequence generation model.
 
 **Learning Objectives:**
@@ -181,7 +187,7 @@ This structured learning plan applies the Pareto principle to AI/ML education - 
 - Sequence generation produces coherent outputs
 - Implementation demonstrates understanding of NLP evaluation
 
-### Milestone 2.3: Reinforcement Learning (6-8 weeks)
+### Milestone 2.3: Reinforcement Learning
 **Goal:** Implement an agent that masters a moderately complex environment through reinforcement learning.
 
 **Learning Objectives:**
@@ -206,7 +212,7 @@ This structured learning plan applies the Pareto principle to AI/ML education - 
 
 ## Phase 3: Advanced AI Systems
 
-### Milestone 3.1: Generative Models (6-8 weeks)
+### Milestone 3.1: Generative Models
 **Goal:** Create a GAN or VAE capable of generating novel, high-quality outputs.
 
 **Learning Objectives:**
@@ -229,7 +235,7 @@ This structured learning plan applies the Pareto principle to AI/ML education - 
 - Interactive demonstration of latent space manipulation
 - Proper quantitative evaluation of generated outputs
 
-### Milestone 3.2: Transformer Architecture (8-10 weeks)
+### Milestone 3.2: Transformer Architecture
 **Goal:** Implement a transformer model for sequence transduction tasks.
 
 **Learning Objectives:**
@@ -252,7 +258,7 @@ This structured learning plan applies the Pareto principle to AI/ML education - 
 - Visualization of attention mechanisms
 - Analysis of model capacity vs. performance
 
-### Milestone 3.3: Small Language Model (10-12 weeks)
+### Milestone 3.3: Small Language Model
 **Goal:** Train a decoder-only transformer language model from scratch.
 
 **Learning Objectives:**

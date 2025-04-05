@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "learn-ai-ml-dl"
+version = "0.1.0"
+description = "Self-contained AI/ML curriculum and playground"
+authors = [{ name = "jakedevsthings" }]
+dependencies = []
+requires-python = ">=3.10"
+
+[tool.setuptools]
+packages = ["ml_core", "phase0"]
+
+[tool.setuptools.package-dir]
+"" = "."
