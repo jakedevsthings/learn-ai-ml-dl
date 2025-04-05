@@ -11,7 +11,7 @@ dependencies = []
 requires-python = ">=3.10"
 
 [tool.setuptools]
-packages = ["ml_core", "phase0"]
+packages = ["ml_core_numpy", "ml_core_torch", "phase0"]
 
 [tool.setuptools.package-dir]
 "" = "."
