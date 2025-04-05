@@ -35,9 +35,6 @@ project_root/
 │   ├── scratchpad.ipynb
 │   └── xor_visualization.ipynb
 │
-├── tests/
-│   └── test_core_components.py
-│
 ├── README.md
 ├── plan.md
 └── requirements.txt
