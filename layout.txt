@@ -1,30 +1,40 @@
 project_root/
 │
-├── ml_core/
+├── ml_core_numpy/
 │   ├── layers/
 │   │   ├── dense.py
-│   │   └── __init__.py
 │   ├── activations/
 │   │   ├── sigmoid.py
-│   │   └── __init__.py
 │   ├── losses/
 │   │   └── binary_crossentropy.py
-│   ├── metrics/
-│   └── network.py         # high-level NN class that stacks layers
+│   └── network.py
+│
+├── ml_core_torch/
+│   ├── models/
+│   │   ├── xor_net.py
+│   │   └── mnist_cnn.py
+│   ├── train/
+│   │   ├── train_loop.py
+│   │   └── evaluate.py
+│   ├── utils/
+│   │   ├── data.py
+│   │   └── plot.py
+│   └── config/
+│       └── defaults.py
 │
 ├── milestone_1_1/
 │   ├── train.py
 │   ├── visualize.py
-│   └── xor_dataset.py     # milestone-specific code
+│   ├── xor_dataset.py
+│   └── milestone_1_1_summary.md
 │
 ├── milestone_1_2/
 │   └── (will re-use layers, network, etc.)
 │
 ├── notebooks/
-│   └── scratchpad.ipynb
-│
-├── tests/
-│   └── test_core_components.py
+│   ├── scratchpad.ipynb
+│   └── xor_visualization.ipynb
 │
 ├── README.md
+├── plan.md
 └── requirements.txt

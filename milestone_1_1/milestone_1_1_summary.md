@@ -20,7 +20,7 @@ In this milestone, I created a trivial neural network from scratch with the help
   - The network was trained for 5000 epochs with a learning rate of 0.2. I learned about the impact of learning rate on the training process.
 
 ## Results
-- As can be seen in [xor_visualization.ipynb](../notebooks/xor_visualization.ipynb), the network was able to correctly classify the XOR problem after training, with an accuracy of 100% and a final loss of 0.024100.
+- As can be seen in [xor_visualization.ipynb](xor_visualization.ipynb), the network was able to correctly classify the XOR problem after training, with an accuracy of 100% and a final loss of 0.024100.
 - I observed a key insight in the training behavior that due to the tanh activation function, the accuracy jumped at around epoch 1500, and then the loss also started to decrease. 
 - I was also able to directly visualize the decision boundary of the network, which was a hyperbolic line, and the layer activations, which were the inputs to the hidden layer.
 
@@ -32,5 +32,5 @@ In this milestone, I created a trivial neural network from scratch with the help
 - Next steps are onwards to milestone 1.2: MNIST Digit Recognition!
 
 ## Training Results and Visualizations
-[Training results and visualizations](../notebooks/xor_visualization.ipynb)
+[Training results and visualizations](xor_visualization.ipynb)
 
