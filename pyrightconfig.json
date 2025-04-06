@@ -1,0 +1,15 @@
+{
+    "include": [
+        "ml_core",
+        "phase0",
+        "notebooks"
+    ],
+    "exclude": [
+        "**/__pycache__",
+        "**/venv"
+    ],
+    "reportMissingImports": true,
+    "reportMissingTypeStubs": false,
+    "pythonVersion": "3.11",
+    "typeCheckingMode": "basic"
+}
