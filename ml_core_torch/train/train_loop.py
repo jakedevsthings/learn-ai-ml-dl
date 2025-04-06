@@ -38,7 +38,7 @@ def train_model(
                 loss_history.append(loss.item())
                 accuracy_history.append(accuracy)
 
-                if epoch % 100 == 0 or epoch == num_epochs - 1:
+                if epoch % 500 == 0 or epoch == num_epochs - 1:
                     print(
                         f"Epoch {epoch}/{num_epochs}, Loss: {loss.item():.4f}, Accuracy: {accuracy:.4f}"
                     )
