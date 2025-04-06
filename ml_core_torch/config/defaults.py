@@ -11,5 +11,5 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 DEFAULTS = {
     "epochs": 5000,
     "lr": 0.2,
-    "batch_size": 4
+    "batch_size": 4,
 }

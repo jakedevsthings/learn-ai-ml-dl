@@ -1,7 +1,7 @@
 # /learn-ai-ml-dl/ml_core_torch/models/xor_net.py
 
-import torch
 import torch.nn as nn
+
 
 class XORNet(nn.Module):
     def __init__(self):
@@ -10,9 +10,8 @@ class XORNet(nn.Module):
             nn.Linear(2, 4),
             nn.Tanh(),
             nn.Linear(4, 1),
-            nn.Sigmoid()
+            nn.Sigmoid(),
         )
-        
+
     def forward(self, x):
         return self.net(x)
-            
