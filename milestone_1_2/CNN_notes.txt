@@ -1,0 +1,67 @@
+
+CNN is a type of neural net that specializes in pattern recognition
+
+INPUT LAYER
+(CNN LAYER)
+OUTPUT LAYER
+
+CNN LAYER:
+Given an image (matrix of pixels)
+- Filters (PATTERN TO LOOK FOR, SIZE SUBSET OF IMAGE SIZE)
+    - Apply filters for pattern recognition
+    - Do this by sliding the filters across the image
+        - FOR EACH POSSIBLE LOCATION OF FILTER e.g. 3X3 PIXELS:
+            - MATDOTPRODUCT FILTER X BLOCK = NUMBER
+            - STRIDE IS NUMBER OF ELEMENTS YOU SHIFT
+            - WILL END UP WITH FEATURE MAP
+    - Location invariant
+    - Multiple layers of filters
+        - More abstract patterns etc.
+        - Aggregate using different filter (3D filter)
+    - FLATTEN your last set of features into one vector, input to NN
+- POOLING
+    - DOWNSCALE IMAGE
+        - e.g. 2x2 filter with stride=2, take max number in the filter
+    - Reduce computation
+    - Reduce overfitting (less parameters)
+    - Noise filtering
+- PADDING
+    - Adds 1 row/column of zeros
+    - Then a 3x3 kernel slides over and outputs 28x28, preserving original size 
+    - padding = floor(kernel_size / 2)
+
+- FILTERS ARE LEARNED PARAMETERS
+    - HOW MANY FILTERS, AND SIZE
+
+FEATURE EXTRACTION (CONVOLUTION OPERATION)
+    CONVOLUTION
+    RELU
+    POOLING (E.G. MAX/AVG)
+    CONVOLUTION
+    RELU
+    POOLING
+FLATTEN
+CLASSIFICATION
+
+Rotation/Scaling
+- Not handled by CNN
+- Either
+    - Have rotated/scaled samples in training data OR
+    - Use DATA AUGMENTATION to generate rotated/scaled from existing training samples
+
+Why CNN works better for vision than MLP?
+    - Fully connected NN would destroy spatial information
+    - Many parameters 
+
+BUT ITS BASICALLY THE SAME THING, MAXIMIZING THE AMOUNT THE FILTERS DESCRIBE FEATURES IN THE IMAGE
+
+✅ Final Shape Flow (Recap)
+Layer	Shape
+Input	[B, 1, 28, 28]
+Conv1	[B, 16, 28, 28]
+Pool1	[B, 16, 14, 14]
+Conv2	[B, 32, 14, 14]
+Pool2	[B, 32, 7, 7]
+Flatten	[B, 1568]
+FC1 → ReLU	[B, 128]
+FC2 → Logits	[B, 10]
