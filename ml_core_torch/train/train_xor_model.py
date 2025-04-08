@@ -30,7 +30,7 @@ def train_model(
         loss.backward()
         optimizer.step()
 
-        if epoch % 10 == 0 or epoch == num_epochs - 1:
+        if epoch % 100 == 0 or epoch == num_epochs - 1:
             with torch.no_grad():
                 predicted_labels = (preds > 0.5).float()
                 accuracy = (predicted_labels == labels).float().mean().item()
