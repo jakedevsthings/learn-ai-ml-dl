@@ -1,10 +1,10 @@
-# /learn-ai-ml-dl/ml_core_torch/train/train_loop.py
+# /learn-ai-ml-dl/ml_core_torch/train/train_xor_model.py
 
 import torch
 from torch import nn
 
 
-def train_model(
+def train_xor_model(
     model: nn.Module,
     inputs: torch.Tensor,
     labels: torch.Tensor,
